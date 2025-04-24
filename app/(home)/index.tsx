@@ -5,6 +5,7 @@ import { SignOutButton } from '@/app/components/SignOutButton';
 import { styles } from './styles';
 import { MainScreen } from '../components/MainScreen';
 import { MyFooter } from '../components/MyFooter'
+import { CardsScreen } from '../components/CardsScreen';
 
 export default function Page() {
   const { user } = useUser();
@@ -17,10 +18,7 @@ export default function Page() {
 
       {logTest &&
         <View>
-          <Text style={styles.text}>
-            Hello {user?.emailAddresses[0].emailAddress || "yupi@gmial.com"}
-          </Text>
-          <SignOutButton />
+          <CardsScreen/>
         </View>
       }
 
