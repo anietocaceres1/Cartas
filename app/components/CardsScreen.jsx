@@ -10,7 +10,7 @@ import { Card } from './Card.jsx'
 const cardsForType = [
     {
         name: "oro",
-        image: require(`../assets/oro.png`)
+        image: require("../assets/oro.png")
     },
     {
         name: "copa",
@@ -164,6 +164,9 @@ export const CardsScreen = () => {
                 })}
 
             </View>
+            <view>
+                <Image source = {require("../assets/copa.png")}></Image>
+            </view>
 
         </View>
 
@@ -189,7 +192,7 @@ const styles = StyleSheet.create({
     card_container: {
         borderWidth: 1,
         borderColor: '#DEDEDE',
-        padding: 12,
+        padding: 6,
         shadowColor: '#DEDEDE',
         shadowOffset: { width: 0, height: 0 },
         shadowOpacity: 1,
@@ -201,8 +204,8 @@ const styles = StyleSheet.create({
         alignItems: 'stretch',
         gap: 16, // solo disponible en React Native >= 0.71
         marginHorizontal: 'auto', // no se admite 'auto', usar otra forma si es necesario centrar
-        width: 360,
-        height: 300,
+        width: 600,
+        height: 600,
         maxWidth: 720,
         // No existe `perspective` directamente en styles, se usa en animaciones/transforms
         // Por ejemplo: transform: [{ perspective: 100 }]
