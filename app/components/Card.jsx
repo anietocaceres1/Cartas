@@ -11,6 +11,9 @@ export const Card = ({ onClick, card, index, isInactive, isFlipped, isDisabled }
     }
   };
 
+
+  console.log(index)
+
   return (
     <TouchableOpacity
       style={[
@@ -40,9 +43,9 @@ export const Card = ({ onClick, card, index, isInactive, isFlipped, isDisabled }
 const styles = StyleSheet.create({
   card: {
     width: 100,
-    height: 150,
+    height: 100,
     margin: 10,
-    backgroundColor: "#eee",
+    //backgroundColor: "#eee",
     borderRadius: 10,
     overflow: "hidden",
     justifyContent: "center",
@@ -55,17 +58,26 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  cardFontFace: {
+    transform: [{ rotateY: '180deg' }],
+
+  },
+
   image: {
-    width: 80,
-    height: 120,
+    width: '95%',
+    height: '95%',
+    resizeMode: 'contain',
   },
+
   flipped: {
-    // Podés cambiar el fondo o algo si está volteado
-    backgroundColor: "#fff",
+    transform: [{ rotateY: '180deg' }],
+    backfaceVisibility: 'hidden', // para efectos 3D
   },
+
   inactive: {
-    opacity: 0.4,
-  },
+    // visibility: hidden;
+    opacity: 0,
+  }
 });
 
 
