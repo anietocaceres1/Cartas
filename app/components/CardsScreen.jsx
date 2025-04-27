@@ -6,6 +6,8 @@ import { useState, useEffect, useRef } from 'react';
 
 import { Card } from './Card.jsx'
 
+import { FlipCardApp } from './FlipCard.jsx'
+
 
 const cardsForType = [
     {
@@ -148,6 +150,7 @@ export const CardsScreen = () => {
     return (
         <View>
             <Text h4>Hola</Text>
+            <FlipCardApp/>
             <View style={styles.card_container}>
                 {cards.map((card, index) => {
                     return (
