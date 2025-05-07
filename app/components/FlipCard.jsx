@@ -11,9 +11,12 @@ import {
 } from 'react-native';
 
 /* ------------ COMPONENTE FLIP CARD ------------ */
-const FlipCard = ({ frontImage, backImage }) => {
+export default FlipCard = ({ frontImage, backImage, index, isDisabled }) => {
   const [showBack, setShowBack] = useState(false);     // false = Bulbasaur
   const rotation = useRef(new Animated.Value(0)).current;
+
+  console.log(showBack , index)
+
 
   /* ------------ cada vez que cambia showBack se anima ------------ */
   useEffect(() => {
@@ -36,7 +39,13 @@ const FlipCard = ({ frontImage, backImage }) => {
   });
 
   /* ------------ manejador de pulsación ------------ */
-  const handlePress = () => setShowBack((prev) => !prev);
+  const handlePress = () => { 
+    if (!showBack){setShowBack((prev) => !prev)} 
+  };
+
+  const restartCard = () => {
+    setShowBack((prev) => !prev)
+  }
 
   return (
     <TouchableOpacity onPress={handlePress} activeOpacity={0.9}>
@@ -62,7 +71,7 @@ const FlipCard = ({ frontImage, backImage }) => {
 };
 
 /* ------------ APP DE PRUEBA ------------ */
-export default function FlipCardApp() {
+export  function FlipCardApp() {
   const bulbasaur = {
     uri: require("../assets/backCard.png"),
   };
@@ -110,8 +119,8 @@ const styles = StyleSheet.create({
 
   /* ----- carta ----- */
   cardContainer: {
-    width: 160,
-    height: 160,
+    width: 100,
+    height: 100,
     borderRadius: 12,
     perspective: 1000,        // 3-D real en móvil y web
     ...shadowStyle,

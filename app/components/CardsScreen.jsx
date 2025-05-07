@@ -6,7 +6,7 @@ import { useState, useEffect, useRef } from 'react';
 
 import { Card } from './Card.jsx'
 
-import { FlipCardApp } from './FlipCard.jsx'
+import  FlipCard  from './FlipCard.jsx'
 
 
 const cardsForType = [
@@ -24,7 +24,7 @@ const cardsForType = [
     },
     {
         name: "espada",
-        image: require(`../assets/copa.png`)
+        image: require(`../assets/espada.png`)
     },
     {
         name: "corazón",
@@ -102,6 +102,8 @@ export const CardsScreen = () => {
         }
         // This is to flip the cards back after 500ms duration
         timeout.current = setTimeout(() => {
+            cards[first].restartCard()
+            cards[second].restartCard()
             setOpenCards([]);
         }, 500);
     };
@@ -150,26 +152,14 @@ export const CardsScreen = () => {
     return (
         <View>
             <Text h4>Hola</Text>
-            <FlipCardApp/>
             <View style={styles.card_container}>
                 {cards.map((card, index) => {
                     return (
-                        <Card
-                            key={index}
-                            card={card}
-                            index={index}
-                            isDisabled={shouldDisableAllCards}
-                            isInactive={checkIsInactive(card)}
-                            isFlipped={checkIsFlipped(index)}
-                            onClick={handleCardClick}
-                        />
+                        <FlipCard frontImage={require(`../assets/backCard.png`)} backImage={card.image} index={index} />
                     );
                 })}
 
             </View>
-            <view>
-                <Image source = {require("../assets/copa.png")}></Image>
-            </view>
 
         </View>
 
@@ -185,7 +175,7 @@ const styles = StyleSheet.create({
     carta: {
         width: 80,
         height: 120,
-        margin: 5,
+        margin: 0,
     },
     container: {
         flex: 1,
@@ -195,7 +185,7 @@ const styles = StyleSheet.create({
     card_container: {
         borderWidth: 1,
         borderColor: '#DEDEDE',
-        padding: 6,
+        padding: 16,
         shadowColor: '#DEDEDE',
         shadowOffset: { width: 0, height: 0 },
         shadowOpacity: 1,
@@ -207,9 +197,9 @@ const styles = StyleSheet.create({
         alignItems: 'stretch',
         gap: 16, // solo disponible en React Native >= 0.71
         marginHorizontal: 'auto', // no se admite 'auto', usar otra forma si es necesario centrar
-        width: 600,
-        height: 600,
-        maxWidth: 720,
+        width: 500,
+        height: 500,
+        maxWidth: 600,
         // No existe `perspective` directamente en styles, se usa en animaciones/transforms
         // Por ejemplo: transform: [{ perspective: 100 }]
     },
