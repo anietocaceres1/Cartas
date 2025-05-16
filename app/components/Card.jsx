@@ -21,7 +21,7 @@ export const Card = ({ onClick, card, index, isInactive, isFlipped, isDisabled }
         isFlipped && styles.flipped,
         isInactive && styles.inactive,
       ]}
-      onPress={handleClick}
+      //onPress={handleClick}
       activeOpacity={0.8}
       disabled={isDisabled || isFlipped}
     >

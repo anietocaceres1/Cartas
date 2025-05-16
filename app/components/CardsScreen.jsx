@@ -108,15 +108,18 @@ export const CardsScreen = () => {
         }, 500);
     };
     const handleCardClick = (index) => {
+        console.log("carta escogida ", index)
         if (openCards.length === 1) {
             setOpenCards((prev) => [...prev, index]);
             setMoves((moves) => moves + 1);
-            disable();
+            //disable();
         } else {
             clearTimeout(timeout.current);
             setOpenCards([index]);
         }
     };
+
+    
     useEffect(() => {
         let timeout = null;
         if (openCards.length === 2) {

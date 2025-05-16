@@ -15,9 +15,6 @@ export default FlipCard = ({ frontImage, backImage, index, isDisabled }) => {
   const [showBack, setShowBack] = useState(false);     // false = Bulbasaur
   const rotation = useRef(new Animated.Value(0)).current;
 
-  console.log(showBack , index)
-
-
   /* ------------ cada vez que cambia showBack se anima ------------ */
   useEffect(() => {
     Animated.spring(rotation, {
@@ -40,7 +37,7 @@ export default FlipCard = ({ frontImage, backImage, index, isDisabled }) => {
 
   /* ------------ manejador de pulsación ------------ */
   const handlePress = () => { 
-    if (!showBack){setShowBack((prev) => !prev)} 
+    {setShowBack((prev) => !prev)} 
   };
 
   const restartCard = () => {
